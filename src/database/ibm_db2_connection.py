@@ -36,7 +36,7 @@ def insert_data_with_connection(connection, query, **kwargs):
 
 if __name__ == "__main__":
     connection = get_connection()
-    if(connection is None):
+    if(connection is not None):
         create_schema(connection)
         insert_data_with_connection(connection, "INSERT INTO students (st_id,st_name,st_stream) VALUES(?,?,?);", sti='2',
                                     stn='Shravankumar',
