@@ -24,10 +24,12 @@ jobs:
         tag: 1.0
     - name: Deploy to IBM CF
       uses: citizen-of-planet-earth/cf-cli-action@v1
+      env:
+        CF_DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       with:
         cf_api: https://api.eu-gb.cf.cloud.ibm.com
         cf_username: ${{ secrets.CF_USER }}
         cf_password: ${{ secrets.CF_PASSWORD }}
         cf_org: ${{ secrets.CF_USER }}
         cf_space: dev
-        command: push -f deploy/cf/manifest.yml
+        command: push --docker-username ${{ secrets.DOCKER_USERNAME }} -f deploy/cf/manifest.yml
