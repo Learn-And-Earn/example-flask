@@ -4,6 +4,7 @@ applications:
     memory: 128M
     docker:
       image: docker.pkg.github.com/learn-and-earn/example-flask/example-flask:1
+      username: shra012-sa
     env:
       APP_PORT: 8080
       BUILD_ENV: development
