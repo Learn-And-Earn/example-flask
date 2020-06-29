@@ -21,8 +21,17 @@ jobs:
     - name: Build and publish
       uses: zenato/docker-action@master
       with:
-          username: ${{ secrets.DOCKER_USERNAME }}
-          password: ${{ secrets.DOCKER_PASSWORD }}
-          repository: learn-and-earn/example-flask/example-flask
-          registry: docker.pkg.github.com
-          tag: 1.0
+        username: ${{ secrets.DOCKER_USERNAME }}
+        password: ${{ secrets.DOCKER_PASSWORD }}
+        repository: learn-and-earn/example-flask/example-flask
+        registry: docker.pkg.github.com
+        tag: 1.0
+    - name: Deploy to IBM CF
+      uses: citizen-of-planet-earth/cf-cli-action@v1
+      with:
+        cf_api: https://api.eu-gb.cf.cloud.ibm.com
+        cf_username: ${{ secrets.CF_USER }}
+        cf_password: ${{ secrets.CF_PASSWORD }}
+        cf_org: ${{ secrets.CF_USER }}
+        cf_space: dev
+        command: push -f cf/deploy/manifest.yml
