@@ -30,4 +30,4 @@ jobs:
         cf_password: ${{ secrets.CF_PASSWORD }}
         cf_org: ${{ secrets.CF_USER }}
         cf_space: dev
-        command: push -f cf/deploy/manifest.yml
+        command: push -f deploy/cf/manifest.yml
