@@ -30,4 +30,4 @@ jobs:
         cf_password: ${{ secrets.CF_PASSWORD }}
         cf_org: ${{ secrets.CF_USER }}
         cf_space: dev
-        command: push -f deploy/cf/manifest.yml
+        command: CF_DOCKER_PASSWORD=${{ secrets.DOCKER_PASSWORD }} push --docker-username ${{ secrets.DOCKER_USERNAME }} -f deploy/cf/manifest.yml
