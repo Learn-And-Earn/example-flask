@@ -15,9 +15,7 @@ on:
 
 jobs:
   deploy:
-
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
     - name: Build and publish
@@ -28,3 +26,12 @@ jobs:
           repository: learn-and-earn/example-flask/example-flask
           registry: docker.pkg.github.com
           tag: 1.0
+    - name: Deploy to IBM CF
+      uses: citizen-of-planet-earth/cf-cli-action@v1
+      with:
+        cf_api: https://api.eu-gb.cf.cloud.ibm.com
+        cf_username: ${{ secrets.CF_USER }}
+        cf_password: ${{ secrets.CF_PASSWORD }}
+        cf_org: AwesomeApp
+        cf_space: Development
+        command: push -f cf/deploy/manifest.yml
