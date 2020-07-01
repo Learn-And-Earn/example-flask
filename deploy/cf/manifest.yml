@@ -1,11 +1,11 @@
 --- 
 applications: 
-  name: example-flask
+- name: example-flask
   docker: 
     image: "shra012/example-flask:latest"
   memory: 128M
   routes: 
-    - route: example-flask.eu-gb.mybluemix.net
+  - route: example-flask.eu-gb.mybluemix.net
   env: 
     APP_PORT: 8080
     BUILD_ENV: development
