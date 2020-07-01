@@ -1,5 +1,8 @@
 # example-flask
 
+## Github Action Build Status
+![Deploy To IBM CF](https://github.com/Learn-And-Earn/example-flask/workflows/Deploy%20To%20IBM%20CF/badge.svg)
+
 REST API written in Python Flask & DB2
 
 ## Pre-requisites
