@@ -1,4 +1,4 @@
-from python:3
+from python:3-alpine
 
 MAINTAINER Shravankumar Nagarajan
 
