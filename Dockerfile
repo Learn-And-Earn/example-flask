@@ -1,5 +1,4 @@
 from python:3.8-slim
-
 MAINTAINER Shravankumar Nagarajan
 
 COPY . /app
