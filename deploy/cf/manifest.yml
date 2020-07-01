@@ -1,6 +1,7 @@
 --- 
 applications: 
 - name: example-flask
+  disk quota: 2G
   docker: 
     image: "shra012/example-flask:latest"
   memory: 128M
