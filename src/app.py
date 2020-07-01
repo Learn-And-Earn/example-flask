@@ -1,7 +1,7 @@
 from flask import Flask
 
 from .config import app_config
-from .controllers.controller import controller
+from .controllers.model_controller import model_controller
 
 
 def create_app(env_name):
@@ -14,7 +14,7 @@ def create_app(env_name):
 
     app.config.from_object(app_config[env_name])
 
-    app.register_blueprint(controller, url_prefix='/api/v1/model')
+    app.register_blueprint(model_controller, url_prefix='/api/v1/model')
 
     @app.route('/', methods=['GET'])
     def index():

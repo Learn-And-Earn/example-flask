@@ -7,6 +7,7 @@ name = "pypi"
 flask = "*"
 python-dotenv = "*"
 marshmallow = "*"
+ibm_db_sa="*"
 
 [dev-packages]
 autopep8="*"
