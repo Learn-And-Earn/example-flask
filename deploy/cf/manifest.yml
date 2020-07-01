@@ -1,7 +1,8 @@
 applications:
-  - name: example-flask
     random-route: true
     memory: 128M
+    routes:
+      - route: example-flask.eu-gb.mybluemix.net
     docker:
       image: shra012/example-flask:latest
     env:
