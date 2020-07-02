@@ -1,13 +1,13 @@
 from .base import session_factory, Base
 
 
-def create(model: Base):
+def create(base_type, model: Base):
     session = session_factory(model)
     session.add(model)
     session.commit()
     id = model.id
     session.close()
-    return id
+    return get(base_type, id=id)
 
 
 def update(base_type, id=None, model: Base = None):
@@ -15,11 +15,13 @@ def update(base_type, id=None, model: Base = None):
         id = model.id
     ignore_keys = ['_sa_instance_state', 'id']
     session = session_factory(model)
-    model_value_pairs = {k: v for k, v in vars(model).items() if k not in ignore_keys}
-    session.query(base_type).filter(base_type.id == id).update(model_value_pairs)
+    model_value_pairs = {k: v for k, v in vars(
+        model).items() if k not in ignore_keys}
+    session.query(base_type).filter(
+        base_type.id == id).update(model_value_pairs)
     session.commit()
     session.close()
-    return get(type(model), id=id)
+    return get(base_type, id=id)
 
 
 def get(base_type, id=None, model: Base = None):
@@ -38,9 +40,11 @@ def get_all(base_type, model: Base = None):
     return models
 
 
-def delete(model: Base):
+def delete(base_type, id=None, model: Base = None):
+    if id is None:
+        id = model.id
     session = session_factory(model)
-    session.delete(model)
+    session.query(base_type).filter(base_type.id == id).delete()
     session.commit()
     session.close()
     return True

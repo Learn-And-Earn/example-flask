@@ -7,6 +7,8 @@ def custom_response(res, status_code):
     """
     if type(res) is list:
         res = deserialize_json_properties_list(res)
+    elif type(res) is dict:
+        res = res
     else:
         res = deserialize_json_properties_class(res)
 
@@ -24,7 +26,8 @@ def deserialize_json_properties_list(list_of_objects, *args: str):
         ignore_keys.append(arg)
 
     for objects in list_of_objects:
-        dictionary = {k: v for k, v in vars(objects).items() if v is not None and k not in ignore_keys}
+        dictionary = {k: v for k, v in vars(
+            objects).items() if v is not None and k not in ignore_keys}
         final_list_of_dicts.append(dictionary)
 
     return final_list_of_dicts
@@ -35,6 +38,7 @@ def deserialize_json_properties_class(object, *args: str):
     for arg in args:
         ignore_keys.append(arg)
 
-    dictionary = {k: v for k, v in vars(object).items() if v is not None and k not in ignore_keys}
+    dictionary = {k: v for k, v in vars(
+        object).items() if v is not None and k not in ignore_keys}
 
     return dictionary
