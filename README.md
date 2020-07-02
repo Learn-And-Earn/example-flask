@@ -66,7 +66,10 @@ curl http://localhost:{APP_PORT}/api/v1/model/
  # Build the docker image 
  docker build -t shra012/example-flask:1.0 .
  # Run the docker container and put the port as specified in the .env file
- docker run -d -p 5000:5000 --name example-flask -e PORT=5000 -e Build_ENV=development shra012/example-flask:1.0
+ docker run --name example-flask -e BUILD_ENV=development -e DATABASE=database_name \
+ -e HOSTNAME=database_host -e DB2_PORT=50000 -e UID=database_user \  
+ -e SCHEMA_NAME=database_schema -e PASSWORD=database_password -e DIALECT=ibm_db_sa \  
+ -p 5000:8080 shra012/example-flask:latest
  # Check the logs
  docker logs -f example-flask
  # Cleaup the container
