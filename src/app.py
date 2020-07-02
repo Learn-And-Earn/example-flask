@@ -21,6 +21,6 @@ def create_app(env_name):
         """
         example endpoint
         """
-        return 'Welcome to Python Flask Microservice API'
+        return 'Welcome to Python Flask Microservice API - test deploy'
 
     return app
