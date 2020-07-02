@@ -13,4 +13,8 @@ RUN pip install pipenv
 
 RUN pipenv install --system --deploy --skip-lock
 
-CMD ["python", "run.py"]
+RUN chmod +x ./run-app.sh
+
+RUN chmod -R 755 ./socket
+
+CMD ["./run-app.sh"]

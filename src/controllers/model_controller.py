@@ -46,7 +46,7 @@ def create():
     schema = ModelSchema()
     model = ExampleModel(req_data)
     schema.dump(model)
-    response = ibm_db2_dml.create(ExampleModel,model)
+    response = ibm_db2_dml.create(ExampleModel, model)
     return custom_response(response, 201)
 
 
@@ -55,5 +55,5 @@ def delete(id):
     """
     Delete A Model
     """
-    ibm_db2_dml.delete(ExampleModel,id=id)
+    ibm_db2_dml.delete(ExampleModel, id=id)
     return custom_response({'message': 'deleted'}, 200)
