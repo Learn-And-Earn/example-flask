@@ -69,7 +69,7 @@ curl http://localhost:{APP_PORT}/api/v1/model/
  docker run --name example-flask -e BUILD_ENV=development -e DATABASE=database_name \
  -e HOSTNAME=database_host -e DB2_PORT=50000 -e UID=database_user \  
  -e SCHEMA_NAME=database_schema -e PASSWORD=database_password -e DIALECT=ibm_db_sa \  
- -p 5000:8080 shra012/example-flask:latest
+ -p 5000:8080 shra012/example-flask:1.0
  # Check the logs
  docker logs -f example-flask
  # Cleaup the container
