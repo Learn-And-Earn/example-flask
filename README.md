@@ -26,7 +26,7 @@ cd example-flask
 pipenv install --deploy --skip-lock
 # [Optional Step] If you get a warining stating the virtual environment path dosent exist
 set PIPENV_IGNORE_VIRTUALENVS=1
-pipenv install --deploy --skip-lock
+pipenv install --skip-lock
 # Activate the project virtual environment
 pipenv shell
 # Create an local .env file and replace with the relevant values
